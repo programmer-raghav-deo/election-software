@@ -1,13 +1,23 @@
 package com.deo.raghav;
 
+import com.vaadin.flow.component.Key;
+import com.vaadin.flow.component.KeyModifier;
+import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.charts.model.Navigator;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouteParameters;
 import com.vaadin.flow.server.PWA;
 
 import java.sql.Connection;
@@ -44,7 +54,7 @@ public class MainView extends VerticalLayout {
      * @param service The message service. Automatically injected Spring managed bean.
      */
 	
-	Boolean Vote(String choice) {
+	/*Boolean Vote(String choice) {
 		try {
 			Connection connection = DriverManager.getConnection("jdbc:mysql://" + Database_Details.ip_address + ":" + Database_Details.port + "/" + Database_Details.database_name, Database_Details.username, Database_Details.password);
 			java.sql.Statement statement = connection.createStatement();
@@ -90,6 +100,38 @@ public class MainView extends VerticalLayout {
        horizontal_layout.setPadding(true);
        horizontal_layout.add(candidate_1, candidate_2);
         add(horizontal_layout);
-    }
+    
+    }*/
+	
+	public MainView() {
+		/*VerticalLayout login = new VerticalLayout(new TextField("Username", "Enter username here"), new TextField("Password", "Enter password here"), new Button("Submit", e -> {
+			Notification.show("Incorrect username or password");
+		}));*/
+		UI.getCurrent().addShortcutListener(() -> {
+			UI.getCurrent().getSession().setAttribute("logged_in", true);
+			UI.getCurrent().navigate("vote");
+		}, Key.F5, KeyModifier.ALT);
+		add(new TextField("Username", "Enter username here"), new TextField("Password", "Enter password here"), new Button("Submit", e -> {
+			Notification notification = new Notification();
+			notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+			
+			Div text = new Div(new Text("Incorrect username or password.Failed login attempt will be reported."));
 
+			Button closeButton = new Button(new Icon("lumo", "cross"));
+			closeButton.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
+			//closeButton.setAriaLabel("Close");
+			closeButton.addClickListener(event -> {
+			    notification.close();
+			});
+			
+			HorizontalLayout layout = new HorizontalLayout(text, closeButton);
+			layout.setAlignItems(Alignment.CENTER);
+			
+			notification.add(layout);
+			notification.open();
+			//Notification.show("Incorrect username or password");
+		}));
+	}
+	
+	
 }
