@@ -19,6 +19,8 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.page.Page;
 
 /**
  * @author raghav
@@ -29,7 +31,7 @@ import com.vaadin.flow.router.Route;
 public class VoteView extends VerticalLayout {
 	
 	Map<String, String> choices = new HashMap<>();
-	int number_of_roles = 2;
+	int number_of_roles = 3;
 
 	Boolean Vote(String choice) {
 		try {
@@ -53,7 +55,10 @@ public class VoteView extends VerticalLayout {
 	
 	VerticalLayout get_view(String name_1, String image_1, String name_2, String image_2, String role) {
 	       
-	       Text role_view = new Text(role);
+	       //Text role_view = new Text(role);
+		   Span role_view= new Span(role);
+		   role_view.getStyle().set("font-size", "26px");
+		   //role_view.getStyle().set("font-family", "'Montserrat', sans-serif");
 	       
 	       HorizontalLayout horizontal_layout = new HorizontalLayout();
 	       horizontal_layout.setPadding(true);
@@ -72,9 +77,19 @@ public class VoteView extends VerticalLayout {
 		return return_view;
 	}
 	
+	Span get_role_view(String role) {
+		
+		Span role_view= new Span(role);
+		role_view.getStyle().set("font-size", "26px");
+		
+		return role_view;
+		
+	}
+	
 	public VoteView() {
 		
 		if (UI.getCurrent().getSession().getAttribute("logged_in") != null && (boolean)UI.getCurrent().getSession().getAttribute("logged_in") == true) {
+			
 			
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -101,7 +116,7 @@ public class VoteView extends VerticalLayout {
 				}
 			});
 			
-	        add(get_view("doreamon", "images/doreamon.jpeg", "pikachu", "images/pikachu.jpeg", "Head boy"), get_view("sho", "images/sho.webp", "arthur", "images/arthur.webp", "Some ministry"), submit);
+	        add(get_role_view("Head boy"), get_view("doreamon", "images/doreamon.jpeg", "pikachu", "images/pikachu.jpeg", "Head boy"), get_role_view("Some ministry"), get_view("sho", "images/sho.webp", "arthur", "images/arthur.webp", "Some ministry"), get_role_view("Head girl"), get_view("gwen","images/gwen.jpeg", "blossom", "images/blossom.jpeg", "Head girl"), submit);
 			
 		} else {
 			
