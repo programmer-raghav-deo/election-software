@@ -1,0 +1,11 @@
+{
+  "compatibilityMode": false,
+  "productionMode": false,
+  "npmFolder": "/media/raghav/DATA/Programming/eclipse-java-workspace-linux/election-software",
+  "generatedFolder": "/media/raghav/DATA/Programming/eclipse-java-workspace-linux/election-software/target/frontend",
+  "frontendFolder": "/media/raghav/DATA/Programming/eclipse-java-workspace-linux/election-software/frontend",
+  "pnpm.enable": false,
+  "require.home.node": false,
+  "node.version": "v14.21.3",
+  "node.download.root": "https://nodejs.org/dist/"
+}
