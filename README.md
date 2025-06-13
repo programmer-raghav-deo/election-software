@@ -23,7 +23,7 @@ Note : Images used are for demonstration purposes only. Actual election was cond
 
 # How to use the software
 
-Step 1 : Download the jar file -> https://github.com/programmer-raghav-deo/election-software/releases/download/v1.0.0/election-software.jar
+Step 1 : Download the jar file -> https://github.com/programmer-raghav-deo/election-software/releases/download/v2.0.0/election-software.jar
 
 Step 2 : Setup SQL server with database name of your choice (preferably test)
 

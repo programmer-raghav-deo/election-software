@@ -137,14 +137,6 @@ public class VoteView extends VerticalLayout {
 					}
 					Notification.show(checker == true ? "Voted successfully" : "An error occured");
 					final Boolean temp_bool = checker;
-						if (temp_bool == true) {
-							try {
-								Socket_Connection_Handler.send_message(string_builder.toString());
-							} catch (NullPointerException e_2) {
-								// TODO: handle exception
-								System.out.println("WebSocket client not connected");
-							}
-						}
 					UI.getCurrent().getSession().setAttribute("logged_in", false);
 		    		UI.getCurrent().navigate("/");
 					
