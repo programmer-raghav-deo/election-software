@@ -1,50 +1,61 @@
-# Project Base for Vaadin and Spring Boot
+# Overview of election software project
 
-This project can be used as a starting point to create your own Vaadin application with Spring Boot.
-It contains all the necessary configuration and some placeholder files to get you started.
+Purpose : The purpose of this project was to facilitate election for various positions in D.A.V. Public School Aundh,Pune for the academic year 2024 - 2025.
 
-The best way to create your own project based on this starter is via [start.
-vaadin.com](https://start.vaadin.com/).
+Tech Stack : Java programming language,Spring framework along with vaadin for frontend and backend,SQL for database management
 
-## Running the Application
-The project is a standard Maven project. To run it from the command line, type `mvn` and open http://localhost:8080 in your browser.
+Working : The project was deployed on a LAN connected computer. This computer would act as a server allowing for different client pcs connected to same LAN network, to access the website and vote.
 
-You can also import the project to your IDE of choice as you would with any
-Maven project. Read more on [how to set up a development environment for
-Vaadin projects](https://vaadin.com/docs/latest/guide/install) (Windows, Linux, macOS).
+Key features : Customisation options for ip address,database name,username,password of mysql database. Database connection pooling with Hikari.
 
-### Running Integration Tests
+# Screenshots of software
 
-Integration tests are implemented using [Vaadin TestBench](https://vaadin.com/testbench). The tests take a few minutes to run and are therefore included in a separate Maven profile. We recommend running tests with a production build to minimize the chance of development time toolchains affecting test stability. To run the tests using Google Chrome, execute
+![screenshot](https://github.com/user-attachments/assets/80d6f392-21fb-4f0d-9384-4f6bf8a0e30d)
+![screenshot](https://github.com/user-attachments/assets/c07520ab-a880-460b-8579-097dca542a52)
+![screenshot](https://github.com/user-attachments/assets/4288a8c4-3bed-46ef-af6a-ee07e05ba11e)
+![screenshot](https://github.com/user-attachments/assets/f8fa5bec-ae2f-44d9-91b1-0326619afda1)
+![screenshot](https://github.com/user-attachments/assets/fd2da9d4-df71-40d0-ab06-c3077afdfc7c)
+![screenshot](https://github.com/user-attachments/assets/8caff70c-286f-42b4-8397-0c8fa9b0909c)
+![screenshot](https://github.com/user-attachments/assets/8db43036-88a4-468d-86a2-5f84388a9867)
 
-`mvn verify -Pit,production`
 
-and make sure you have a valid TestBench license installed (you can obtain a 
-trial license from the [trial page](
-https://vaadin.com/trial)).
+Note : Images used are for demonstration purposes only. Actual election was conducted with images of candidates along with their names.
 
-## Project structure
+# How to use the software
 
-The project follow Maven's [standard directory layout structure](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html):
-- Under the `srs/main/java` are located Application sources
-    - `Application.java` is a runnable Java application class and the app's 
-      starting point
-    - `GreetService.java` is a Spring service class
-    - `MainView.java` is an example Vaadin view
-- Under the `srs/test` are located the TestBench test files
-- `src/main/resources` contains configuration files and static resources
-- The `frontend` directory in the root folder contains client-side 
-  dependencies and resource files. Example CSS styles used by the application 
-  are located under `frontend/styles`
+Step 1 : Download the jar file -> https://github.com/programmer-raghav-deo/election-software/releases/download/v1.0.0/election-software.jar
 
-## Useful links
+Step 2 : Setup SQL server with database name of your choice (preferably test)
 
-- Read the documentation at [vaadin.com/docs](https://vaadin.com/docs).
-- Follow the tutorials at [vaadin.com/tutorials](https://vaadin.com/tutorials).
-- Watch training videos and get certified at [vaadin.com/learn/training]( https://vaadin.com/learn/training).
-- Create new projects at [start.vaadin.com](https://start.vaadin.com/).
-- Search UI components and their usage examples at [vaadin.com/components](https://vaadin.com/components).
-- Find a collection of solutions to common use cases in [Vaadin Cookbook](https://cookbook.vaadin.com/).
-- Find Add-ons at [vaadin.com/directory](https://vaadin.com/directory).
-- Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/vaadin) or join our [Discord channel](https://discord.gg/MYFq5RTbBn).
-- Report issues, create pull requests in [GitHub](https://github.com/vaadin/).# election-software-school
+Step 3 : Create table by running this command in SQL server 
+```sql
+CREATE TABLE cartoon(name VARCHAR(100), votes VARCHAR(20));
+```
+
+Step 4 : Insert 0 votes for each candidate by running this command in SQL server 
+```sql
+INSERT INTO cartoon VALUES('doreamon','0'),('pikachu','0'),('bill','0'),('sho','0'),('arthur','0'),('gwen','0'),('blossom','0'),('shizuka','0'),('misty','0'),('buttercup','0'),('tyson','0'),('steve','0'),('goku','0'),('vegeta','0'),('thor','0'),('starfire','0'),('margo','0'),('ladybug','0'),('bubbles','0'),('dora','0');
+```
+
+Step 5 : Navigate to folder containing jar file and run
+```bash
+java -jar election-software.jar
+```
+
+Step 6 : Open browser and navigate to -> http://localhost:8080
+
+Step 7 : Press Alt key + F5 to proceed from login page
+
+Step 8 : Click on choices that you want to vote and hit submit button at bottom of page
+
+Step 9 : Login to your sql server
+
+Step 10 : Use database by running this command in SQL server 
+```sql
+USE test;
+```
+
+Step 11 : SELECT all rows from table by running this command in SQL server
+```sql
+SELECT * FROM cartoon;
+```
